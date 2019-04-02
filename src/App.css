@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .Board {
   padding: 1em;
   display: grid;
@@ -5,7 +9,7 @@
   grid-auto-rows: minmax(50px, auto);
   column-gap: 10px;
   row-gap: 1em;
-  /* height: 100vh; */
+  height: 100vh;
 }
 
 .Board__tile {
@@ -27,9 +31,31 @@
   grid-auto-rows: minmax(50px, auto);
   column-gap: 10px;
   row-gap: 1em;
-  /* height: 100vh; */
+  height: 100vh;
 }
 
 .SpymasterBoard__cell {
   border-radius: 3px;
+}
+
+.Screen {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.Button {
+  font-size: 14px;
+  border-radius: 3px;
+  padding: 1em;
+  background-color: #ccc;
+}
+
+.ChoosePlayerControls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 30%;
 }
