@@ -1,13 +1,6 @@
 import React from 'react';
 import './App.css';
-
-const spymasterBoardBlue = [
-  ['B', '', '', 'B', ''],
-  ['B', 'R', 'R', 'B', 'B'],
-  ['B', 'R', '', 'B', 'R'],
-  ['B', 'R', '', 'X', 'R'],
-  ['R', '', 'R', 'B', '']
-]
+import Board from './Board';
 
 const cellMapping = {
   R: { colour: '#D64545' },
@@ -16,19 +9,16 @@ const cellMapping = {
   '': { colour: '#F8E3A3'}
 }
 
-const Cell = ({ colour }) => {
-  return <div className="SpymasterBoard__cell" style={{ backgroundColor: colour }} />
-}
-
-const SpymasterScreen = () => {
+const SpymasterScreen = ({ board }) => {
+  const cellSettings = board.map((cell) => {
+    return {
+      colour: cellMapping[cell.agent].colour,
+      word: cell.codeName
+    }
+  })
   return (
-    <div className="SpymasterBoard">
-      {spymasterBoardBlue.map((row, index) => {
-        return row.map((cell, index) => {
-          return <Cell colour={cellMapping[cell].colour} />
-        })
-        
-      })}
+    <div>
+      <Board cellSettings={cellSettings} />
     </div>
   )
 }

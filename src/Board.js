@@ -1,19 +1,18 @@
 import React from 'react';
 import './App.css';
 
-const words = [
-  "eyes", "tin", "icicle", "cemetery", "punishment", "fact", "root", "doctor", "baby", "field", "respect", "hall", "pancake", "pencil", "pie", "stem", "step", "holiday", "silver", "market", "tomatoes", "leather", "scissors", "week", "kitty",
-]
-
-const getWords = () => words.map((word) => {
-  return <div className="Board__tile">{word}</div>
+const generateCells = (cellSettings) => cellSettings.map((cell) => {
+  return <Cell colour={cell.colour} word={cell.word} />
 });
 
+const Cell = ({ colour, word }) => {
+  return <div className="Board__tile" style={{ backgroundColor: colour }} > {word}</div>
+}
 
-const Board = () => {
+const Board = ({ cellSettings }) => {
   return (
     <div className="Board">
-      {getWords()}
+      {generateCells(cellSettings)}
     </div>
   )
 }

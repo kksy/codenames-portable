@@ -23,21 +23,6 @@
   font-size: 14px;
 }
 
-.SpymasterBoard {
-  border: 3px solid #2680C2;
-  padding: 1em;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-auto-rows: minmax(50px, auto);
-  column-gap: 10px;
-  row-gap: 1em;
-  height: 100vh;
-}
-
-.SpymasterBoard__cell {
-  border-radius: 3px;
-}
-
 .Screen {
   height: 100vh;
   display: flex;
