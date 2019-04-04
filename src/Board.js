@@ -1,20 +1,35 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
 
-const generateCells = (cellSettings) => cellSettings.map((cell) => {
-  return <Cell colour={cell.colour} word={cell.word} />
-});
+const Cell = ({ colour, word, position, onClick }) => {
+  const clickHandler = event => {
+    console.log(`clicked cell ${position}`);
+    onClick({ position });
+  };
 
-const Cell = ({ colour, word }) => {
-  return <div className="Board__tile" style={{ backgroundColor: colour }} > {word}</div>
-}
+  return (
+    <div className="Board__tile" onClick={clickHandler} style={{ backgroundColor: colour }}>
+      {word}
+    </div>
+  );
+};
 
-const Board = ({ cellSettings }) => {
+const Board = ({ cellSettings, onClickCell }) => {
   return (
     <div className="Board">
-      {generateCells(cellSettings)}
+      {cellSettings.map(cell => {
+        return (
+          <Cell
+            key={cell.position}
+            position={cell.position}
+            onClick={onClickCell}
+            colour={cell.colour}
+            word={cell.word}
+          />
+        );
+      })}
     </div>
-  )
-}
+  );
+};
 
 export default Board;
