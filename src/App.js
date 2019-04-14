@@ -3,65 +3,13 @@ import AgentScreen from "./AgentScreen";
 import SpymasterScreen from "./SpymasterScreen";
 import ChoosePlayerScreen from "./ChoosePlayerScreen";
 import { generateBoard } from "./GameBoard";
+import { chooseRandomWords } from "./wordList";
+import { generateAgentList } from "./agentList";
 import "./App.css";
 
-const words = [
-  "eyes",
-  "tin",
-  "icicle",
-  "cemetery",
-  "punishment",
-  "fact",
-  "root",
-  "doctor",
-  "baby",
-  "field",
-  "respect",
-  "hall",
-  "pancake",
-  "pencil",
-  "pie",
-  "stem",
-  "step",
-  "holiday",
-  "silver",
-  "market",
-  "tomatoes",
-  "leather",
-  "scissors",
-  "week",
-  "kitty",
-];
-
-const agents = [
-  "B",
-  "",
-  "",
-  "B",
-  "",
-  "B",
-  "R",
-  "R",
-  "B",
-  "B",
-  "B",
-  "R",
-  "",
-  "B",
-  "R",
-  "B",
-  "R",
-  "",
-  "X",
-  "R",
-  "R",
-  "",
-  "R",
-  "B",
-  "",
-];
-
 const App = () => {
+  const words = chooseRandomWords();
+  const agents = generateAgentList();
   const initialBoard = generateBoard({ words, agents });
   const [user, setUser] = useState(null);
   const [board, updateBoard] = useState(initialBoard);

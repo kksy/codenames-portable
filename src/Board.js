@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 
-const Cell = ({ colour, word, position, onClick }) => {
+const Cell = ({ colour, word, position, onClick = () => {} }) => {
   const clickHandler = event => {
     console.log(`clicked cell ${position}`);
     onClick({ position });
