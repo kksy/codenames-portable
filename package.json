@@ -7,6 +7,8 @@
     "node": "10.15.3"
   },
   "dependencies": {
+    "firebase": "^5.9.4",
+    "lodash.isequal": "^4.5.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "2.1.8"

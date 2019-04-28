@@ -17,8 +17,8 @@
   align-items: center;
   justify-content: center;
   border-radius: 3px;
-  background-color: #F8E3A3;
-  font-family: 'Roboto', sans-serif;
+  background-color: #f8e3a3;
+  font-family: "Roboto", sans-serif;
   font-weight: bold;
   font-size: 14px;
 }
@@ -36,6 +36,7 @@
   border-radius: 3px;
   padding: 1em;
   background-color: #ccc;
+  cursor: pointer;
 }
 
 .ChoosePlayerControls {
@@ -43,4 +44,10 @@
   flex-direction: row;
   justify-content: space-between;
   width: 30%;
+}
+
+.AgentControls {
+  padding: 1em;
+  display: flex;
+  justify-content: flex-end;
 }
