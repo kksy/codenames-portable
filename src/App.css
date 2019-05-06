@@ -37,6 +37,7 @@
   padding: 1em;
   background-color: #ccc;
   cursor: pointer;
+  height: 47px;
 }
 
 .ChoosePlayerControls {
@@ -50,4 +51,12 @@
   padding: 1em;
   display: flex;
   justify-content: flex-end;
+}
+
+.Input {
+  height: 47px;
+  font-size: 18px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  box-shadow: none;
 }

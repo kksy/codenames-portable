@@ -8,7 +8,12 @@ const EnterSessionScreen = ({ setSession }) => {
         <h3>
           <label htmlFor="EnterSessionScreen-input">Enter a game session name</label>
         </h3>
-        <input id="EnterSessionScreen-input" onChange={e => updateField(e.target.value)} type="text" />
+        <input
+          id="EnterSessionScreen-input"
+          className="Input"
+          onChange={e => updateField(e.target.value)}
+          type="text"
+        />
         <button type="submit" className="Button">
           Join
         </button>
