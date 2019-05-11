@@ -49,7 +49,9 @@ const App = ({ db, boardService }) => {
   const setGameSession = _setGameSession(realTimeUpdate);
 
   const screen = {
-    agent: <AgentScreen board={board} updateBoard={boardService.storeBoardChanges} />,
+    agent: (
+      <AgentScreen board={board} updateBoard={newBoard => boardService.storeBoardChanges({ sessionId, newBoard })} />
+    ),
     spymaster: (
       <div>
         <SpymasterScreen board={board} />

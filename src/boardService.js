@@ -22,9 +22,9 @@ const createNewBoard = db => sessionId => {
     });
 };
 
-const storeBoardChanges = db => newBoard => {
+const storeBoardChanges = db => ({ newBoard, sessionId }) => {
   db.collection("sessions")
-    .doc("test")
+    .doc(sessionId)
     .set(
       {
         board: newBoard,
