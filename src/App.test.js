@@ -1,8 +1,6 @@
 import React from "react";
 import App from "./App";
-import { render, fireEvent, cleanup, wait } from "react-testing-library";
-import ChoosePlayerScreen from "./ChoosePlayerScreen";
-import AgentScreen from "./AgentScreen";
+import { render, fireEvent, cleanup, waitFor } from "@testing-library/react";
 
 describe("App", () => {
   let mockDb;
@@ -37,9 +35,9 @@ describe("App", () => {
     const { getByText, getByLabelText } = render(<App db={mockDb} boardService={mockBoardService} />);
 
     fireEvent.change(getByLabelText(/Enter a game session name/), { target: { value: sessionName } });
-    await wait(() => fireEvent.submit(getByText(/Join/)));
+    fireEvent.submit(getByText(/Join/));
 
-    expect(createNewBoard).toHaveBeenCalledWith(sessionName);
+    await waitFor(() => expect(createNewBoard).toHaveBeenCalledWith(sessionName));
     expect(getByText("Agent")).toBeDefined();
     expect(getByText("Spymaster")).toBeDefined();
   });
