@@ -1,4 +1,4 @@
-import { generateAgentList } from "./agentList";
+import { generateAgentList, BLUE_AGENT, RED_AGENT, ASSASSIN } from "./agentList";
 
 describe("agentList", () => {
   describe("generateAgentList", () => {
@@ -6,16 +6,28 @@ describe("agentList", () => {
       expect(generateAgentList().length).toEqual(25);
     });
 
-    it("contains 9 B agents", () => {
-      expect(generateAgentList().filter(item => item === "B").length).toEqual(9);
+    it("contains 1 ASSASSIN", () => {
+      expect(generateAgentList().filter(item => item === ASSASSIN).length).toEqual(1);
     });
 
-    it("contains 8 R agents", () => {
-      expect(generateAgentList().filter(item => item === "R").length).toEqual(8);
+    describe("when double agent is RED_AGENT", () => {
+      it("contains 9 red agents", () => {
+        expect(generateAgentList(RED_AGENT).filter(item => item === RED_AGENT).length).toEqual(9);
+      });
+
+      it("contains 8 blue agents", () => {
+        expect(generateAgentList(RED_AGENT).filter(item => item === BLUE_AGENT).length).toEqual(8);
+      });
     });
 
-    it("contains 1 X agents", () => {
-      expect(generateAgentList().filter(item => item === "X").length).toEqual(1);
+    describe("when double agent is BLUE_AGENT", () => {
+      it("contains 9 blue agents", () => {
+        expect(generateAgentList(BLUE_AGENT).filter(item => item === BLUE_AGENT).length).toEqual(9);
+      });
+
+      it("contains 8 red agents", () => {
+        expect(generateAgentList(BLUE_AGENT).filter(item => item === RED_AGENT).length).toEqual(8);
+      });
     });
   });
 });

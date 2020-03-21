@@ -2,29 +2,37 @@ const generateRandomNumber = max => {
   return Math.floor(Math.random() * max);
 };
 
-export const generateAgentList = () => {
+export const BLUE_AGENT = "B";
+export const RED_AGENT = "R";
+export const ASSASSIN = "X";
+
+export const generateAgentList = doubleAgent => {
   let agentPositions = { B: new Set(), R: new Set(), X: new Set() };
   let agents = new Array(25).fill("");
   let positionsToBeFilled = Array.from(agents.keys());
 
-  while (agentPositions["B"].size !== 9) {
+  const numberOfRedAgents = doubleAgent === RED_AGENT ? 9 : 8;
+  const numberOfBlueAgents = doubleAgent === BLUE_AGENT ? 9 : 8;
+  const numberOfAssassin = 1;
+
+  while (agentPositions[BLUE_AGENT].size !== numberOfBlueAgents) {
     const maxPositionsToBeFilledIndex = positionsToBeFilled.length - 1;
     const randomPosition = positionsToBeFilled[generateRandomNumber(maxPositionsToBeFilledIndex)];
-    agentPositions["B"].add(randomPosition);
+    agentPositions[BLUE_AGENT].add(randomPosition);
     positionsToBeFilled = positionsToBeFilled.filter(position => position !== randomPosition);
   }
 
-  while (agentPositions["R"].size !== 8) {
+  while (agentPositions[RED_AGENT].size !== numberOfRedAgents) {
     const maxPositionsToBeFilledIndex = positionsToBeFilled.length - 1;
     const randomPosition = positionsToBeFilled[generateRandomNumber(maxPositionsToBeFilledIndex)];
-    agentPositions["R"].add(randomPosition);
+    agentPositions[RED_AGENT].add(randomPosition);
     positionsToBeFilled = positionsToBeFilled.filter(position => position !== randomPosition);
   }
 
-  while (agentPositions["X"].size !== 1) {
+  while (agentPositions[ASSASSIN].size !== numberOfAssassin) {
     const maxPositionsToBeFilledIndex = positionsToBeFilled.length - 1;
     const randomPosition = positionsToBeFilled[generateRandomNumber(maxPositionsToBeFilledIndex)];
-    agentPositions["X"].add(randomPosition);
+    agentPositions[ASSASSIN].add(randomPosition);
     positionsToBeFilled = positionsToBeFilled.filter(position => position !== randomPosition);
   }
 
