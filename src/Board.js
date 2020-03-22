@@ -14,9 +14,9 @@ const Cell = ({ colour, word, position, onClick = () => {} }) => {
   );
 };
 
-const Board = ({ cellSettings, onClickCell }) => {
+const Board = ({ cellSettings, className, onClickCell }) => {
   return (
-    <div className="Board">
+    <div data-testid="board" className={`Board ${className}`}>
       {cellSettings.map(cell => {
         return (
           <Cell

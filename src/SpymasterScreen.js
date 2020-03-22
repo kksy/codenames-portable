@@ -27,8 +27,8 @@ const SpymasterScreen = ({ board, doubleAgent }) => {
     };
   });
   return (
-    <div data-testid="spymaster-board" className={getDoubleAgentIndicator(doubleAgent)}>
-      <Board cellSettings={cellSettings} doubleAgent={doubleAgent} />
+    <div>
+      <Board className={getDoubleAgentIndicator(doubleAgent)} cellSettings={cellSettings} doubleAgent={doubleAgent} />
     </div>
   );
 };
