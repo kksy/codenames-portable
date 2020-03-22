@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import Board from "./Board";
+import { RED_AGENT } from "./agentList";
 
 const cellMapping = {
   R: { colour: "#D64545", selectedColour: "#FFF" },
@@ -9,7 +10,15 @@ const cellMapping = {
   "": { colour: "#F8E3A3", selectedColour: "#FFF" },
 };
 
-const SpymasterScreen = ({ board }) => {
+const getDoubleAgentIndicator = doubleAgent => {
+  if (doubleAgent) {
+    return doubleAgent === RED_AGENT ? "red-agent" : "blue-agent";
+  }
+
+  return "";
+};
+
+const SpymasterScreen = ({ board, doubleAgent }) => {
   const cellSettings = board.map(cell => {
     return {
       colour: cell.selected ? cellMapping[cell.agent].selectedColour : cellMapping[cell.agent].colour,
@@ -18,8 +27,8 @@ const SpymasterScreen = ({ board }) => {
     };
   });
   return (
-    <div>
-      <Board cellSettings={cellSettings} />
+    <div data-testid="spymaster-board" className={getDoubleAgentIndicator(doubleAgent)}>
+      <Board cellSettings={cellSettings} doubleAgent={doubleAgent} />
     </div>
   );
 };

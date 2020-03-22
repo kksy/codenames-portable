@@ -6,6 +6,7 @@ import SpymasterScreen from "./SpymasterScreen";
 import ChoosePlayerScreen from "./ChoosePlayerScreen";
 import EnterSessionScreen from "./EnterSessionScreen";
 import "./App.css";
+import { BLUE_AGENT } from "./agentList";
 
 const NewGameButton = ({ onClick }) => {
   return (
@@ -54,7 +55,7 @@ const App = ({ db, boardService }) => {
     ),
     spymaster: (
       <div>
-        <SpymasterScreen board={board} />
+        <SpymasterScreen board={board} doubleAgent={BLUE_AGENT} />
         <div className="AgentControls">
           <NewGameButton onClick={() => boardService.createNewBoard(sessionId)} />
         </div>

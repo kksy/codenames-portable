@@ -53,6 +53,14 @@
   justify-content: flex-end;
 }
 
+.blue-agent {
+  border: 8px solid #2680c2;
+}
+
+.red-agent {
+  border: 8px solid #d64545;
+}
+
 .Input {
   height: 47px;
   font-size: 18px;
