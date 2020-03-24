@@ -5,6 +5,7 @@ const generateRandomNumber = max => {
 export const BLUE_AGENT = "B";
 export const RED_AGENT = "R";
 export const ASSASSIN = "X";
+export const BYSTANDER = "";
 
 export const generateAgentList = doubleAgent => {
   let agentPositions = { B: new Set(), R: new Set(), X: new Set() };

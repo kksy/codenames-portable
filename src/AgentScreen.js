@@ -11,7 +11,7 @@ const cellMapping = {
 const AgentScreen = ({ board, updateBoard }) => {
   const cellSettings = board.map(cell => {
     return {
-      colour: cell.selected ? cellMapping[cell.agent].colour : cellMapping[""].colour,
+      colour: cell.selected ? cellMapping[cell.agent].colour : "#CFCFCF",
       word: cell.codeName,
       position: cell.position,
     };
