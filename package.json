@@ -8,9 +8,11 @@
   "dependencies": {
     "firebase": "^7.12.0",
     "lodash.isequal": "^4.5.0",
+    "lodash.shuffle": "^4.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.0"
+    "react-scripts": "3.4.0",
+    "string-hash": "^1.1.3"
   },
   "scripts": {
     "start": "react-scripts start",

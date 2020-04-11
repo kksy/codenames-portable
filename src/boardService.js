@@ -1,16 +1,18 @@
 import { generateBoard } from "./GameBoard";
 import { chooseRandomWords } from "./wordList";
-import { generateAgentList } from "./agentList";
+import { generateAgentList, BLUE_AGENT, RED_AGENT } from "./agentList";
 
 const createNewBoard = db => sessionId => {
+  const doubleAgent = Math.random() < 0.5 ? BLUE_AGENT : RED_AGENT;
   const words = chooseRandomWords();
-  const agents = generateAgentList();
+  const agents = generateAgentList(doubleAgent);
   const initialBoard = generateBoard({ words, agents });
   db.collection("sessions")
     .doc(sessionId)
     .set(
       {
         board: initialBoard,
+        doubleAgent,
       },
       { merge: true }
     )

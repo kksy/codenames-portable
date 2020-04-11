@@ -6,7 +6,6 @@ import SpymasterScreen from "./SpymasterScreen";
 import ChoosePlayerScreen from "./ChoosePlayerScreen";
 import EnterSessionScreen from "./EnterSessionScreen";
 import "./App.css";
-import { BLUE_AGENT } from "./agentList";
 
 const NewGameButton = ({ onClick }) => {
   return (
@@ -20,10 +19,14 @@ const App = ({ db, boardService }) => {
   const [role, setRole] = useState(null);
   const [board, updateBoard] = useState(null);
   const [sessionId, setSessionId] = useState(null);
+  const [doubleAgent, setDoubleAgent] = useState(null);
   const prevBoardRef = useRef();
 
   const _setGameSession = realTimeUpdateBoard => async sessionId => {
     setSessionId(sessionId);
+
+    document.title = `${sessionId}`;
+
     const docRef = await db
       .collection("sessions")
       .doc(sessionId)
@@ -44,9 +47,17 @@ const App = ({ db, boardService }) => {
       const newBoard = snapshot.data().board;
       if (prevBoardRef && !isEqual(prevBoardRef.current, newBoard)) {
         updateBoard(snapshot.data().board);
+        setDoubleAgent(snapshot.data().doubleAgent);
+
+        const notSelected = snapshot.data().board.filter(({ selected }) => !selected);
+        const redRemaining = notSelected.filter(({ agent }) => agent === "R");
+        const blueRemaining = notSelected.filter(({ agent }) => agent === "B");
+
+        document.title = `${sessionId} - red: ${redRemaining.length} / blue: ${blueRemaining.length}`;
       }
     });
   };
+
   const setGameSession = _setGameSession(realTimeUpdate);
 
   const screen = {
@@ -55,7 +66,7 @@ const App = ({ db, boardService }) => {
     ),
     spymaster: (
       <div>
-        <SpymasterScreen board={board} doubleAgent={BLUE_AGENT} />
+        <SpymasterScreen board={board} doubleAgent={doubleAgent} />
         <div className="AgentControls">
           <NewGameButton onClick={() => boardService.createNewBoard(sessionId)} />
         </div>
