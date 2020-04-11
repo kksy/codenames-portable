@@ -24,6 +24,9 @@ const App = ({ db, boardService }) => {
 
   const _setGameSession = realTimeUpdateBoard => async sessionId => {
     setSessionId(sessionId);
+
+    document.title = `${sessionId}`;
+
     const docRef = await db
       .collection("sessions")
       .doc(sessionId)

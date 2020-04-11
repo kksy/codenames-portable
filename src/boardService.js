@@ -3,8 +3,6 @@ import { chooseRandomWords } from "./wordList";
 import { generateAgentList, BLUE_AGENT, RED_AGENT } from "./agentList";
 
 const createNewBoard = db => sessionId => {
-  document.title = `${sessionId}`;
-
   const doubleAgent = Math.random() < 0.5 ? BLUE_AGENT : RED_AGENT;
   const words = chooseRandomWords();
   const agents = generateAgentList(doubleAgent);
