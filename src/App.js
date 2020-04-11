@@ -37,8 +37,6 @@ const App = ({ db, boardService }) => {
       await boardService.createNewBoard(sessionId);
     }
 
-    setDoubleAgent(docRef.data().doubleAgent);
-
     realTimeUpdateBoard(sessionId);
   };
 
@@ -49,6 +47,7 @@ const App = ({ db, boardService }) => {
       const newBoard = snapshot.data().board;
       if (prevBoardRef && !isEqual(prevBoardRef.current, newBoard)) {
         updateBoard(snapshot.data().board);
+        setDoubleAgent(snapshot.data().doubleAgent);
       }
     });
   };
