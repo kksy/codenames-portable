@@ -6,7 +6,6 @@ import SpymasterScreen from "./SpymasterScreen";
 import ChoosePlayerScreen from "./ChoosePlayerScreen";
 import EnterSessionScreen from "./EnterSessionScreen";
 import "./App.css";
-import { BLUE_AGENT } from "./agentList";
 
 const NewGameButton = ({ onClick }) => {
   return (
@@ -20,6 +19,7 @@ const App = ({ db, boardService }) => {
   const [role, setRole] = useState(null);
   const [board, updateBoard] = useState(null);
   const [sessionId, setSessionId] = useState(null);
+  const [doubleAgent, setDoubleAgent] = useState(null);
   const prevBoardRef = useRef();
 
   const _setGameSession = realTimeUpdateBoard => async sessionId => {
@@ -34,6 +34,8 @@ const App = ({ db, boardService }) => {
       await boardService.createNewBoard(sessionId);
     }
 
+    setDoubleAgent(docRef.data().doubleAgent);
+
     realTimeUpdateBoard(sessionId);
   };
 
@@ -47,6 +49,7 @@ const App = ({ db, boardService }) => {
       }
     });
   };
+
   const setGameSession = _setGameSession(realTimeUpdate);
 
   const screen = {
@@ -55,7 +58,7 @@ const App = ({ db, boardService }) => {
     ),
     spymaster: (
       <div>
-        <SpymasterScreen board={board} doubleAgent={BLUE_AGENT} />
+        <SpymasterScreen board={board} doubleAgent={doubleAgent} />
         <div className="AgentControls">
           <NewGameButton onClick={() => boardService.createNewBoard(sessionId)} />
         </div>
