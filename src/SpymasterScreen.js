@@ -4,10 +4,10 @@ import Board from "./Board";
 import { RED_AGENT } from "./agentList";
 
 const cellMapping = {
-  R: { colour: "#D64545", selectedColour: "#FFF" },
-  B: { colour: "#2680C2", selectedColour: "#FFF" },
-  X: { colour: "#888", selectedColour: "#FFF" },
-  "": { colour: "#F8E3A3", selectedColour: "#FFF" },
+  R: { colour: "#D64545", selectedColour: "#ccc" },
+  B: { colour: "#2680C2", selectedColour: "#ccc" },
+  X: { colour: "#888", selectedColour: "#ccc" },
+  "": { colour: "#F8E3A3", selectedColour: "#ccc" },
 };
 
 const getDoubleAgentIndicator = doubleAgent => {
