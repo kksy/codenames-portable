@@ -48,6 +48,12 @@ const App = ({ db, boardService }) => {
       if (prevBoardRef && !isEqual(prevBoardRef.current, newBoard)) {
         updateBoard(snapshot.data().board);
         setDoubleAgent(snapshot.data().doubleAgent);
+
+        const notSelected = snapshot.data().board.filter(({ selected }) => !selected);
+        const redRemaining = notSelected.filter(({ agent }) => agent === "R");
+        const blueRemaining = notSelected.filter(({ agent }) => agent === "B");
+
+        document.title = `${sessionId} - red: ${redRemaining.length} / blue: ${blueRemaining.length}`;
       }
     });
   };
